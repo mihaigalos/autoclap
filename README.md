@@ -17,6 +17,14 @@ Moreover, a crate unifying this would provide consistency across all apps using 
 
 ```rust
 fn main() {
-    let app = autoclap();
+    let app = autoclap(); // return a clap::App
+    app.arg(
+        Arg::with_name("myarg")
+            .long("myarg")
+            .short('m')
+            .help("My arg description."),
+    )
+    .get_matches_safe()
+    .unwrap_or_else(|e| e.exit());
 }
 ```
