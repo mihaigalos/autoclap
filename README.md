@@ -10,7 +10,8 @@ Auto-propagate Cargo.toml infos (name, version, author, repo) into app.
 * repository where it's hosted
 * author(s)
 
-This information is usually duplicated in the app's `main`, leading to potentials inconsistencies (users forget to update it).
+This information is usually duplicated in the app's `main`, leading to potential inconsistencies (update in one place but not another).
+Moreover, a crate unifying this would provide consistency across all apps using it.
 
 ## Usage
 
