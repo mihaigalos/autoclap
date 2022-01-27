@@ -2,35 +2,25 @@ use clap::{App, Arg};
 
 pub fn autoclap() -> clap::App<'static> {
     let repo = env!("CARGO_PKG_REPOSITORY");
+    let mut release_tag = "";
+
     if repo.contains("github") {
-        return App::new(concat!(
-            env!("CARGO_CRATE_NAME"),
-            " ",
-            env!("CARGO_PKG_VERSION"),
-            " :: ",
-            concat!(
-                env!("CARGO_PKG_REPOSITORY"),
-                "/releases/tag/",
-                env!("CARGO_PKG_VERSION"),
-            )
-        ))
-        .author(env!("CARGO_PKG_AUTHORS"))
-        .about(env!("CARGO_PKG_DESCRIPTION"))
-        .arg(
-            Arg::new("debug")
-                .long("debug")
-                .short('d')
-                .help("Print raw data used in statistics."),
-        );
+        release_tag = "/releases/tag/";
     } else if repo.contains("gitlab") {
-        return App::new(concat!(
+        release_tag = "/-/releases/";
+    }
+
+    if repo.contains("github") {
+        return App::new(format!(
+            "{}{}{}{}{}",
             env!("CARGO_CRATE_NAME"),
             " ",
             env!("CARGO_PKG_VERSION"),
             " :: ",
-            concat!(
+            format!(
+                "{}{}{}",
                 env!("CARGO_PKG_REPOSITORY"),
-                "/-/releases/",
+                release_tag,
                 env!("CARGO_PKG_VERSION"),
             )
         ))
@@ -43,7 +33,7 @@ pub fn autoclap() -> clap::App<'static> {
                 .help("Print raw data used in statistics."),
         );
     } else {
-        panic!("Cannot determine repository.");
+        panic!("Cannot determine repository from repository URL.");
     }
 }
 
