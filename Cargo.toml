@@ -1,10 +1,13 @@
 [package]
 name = "autoclap"
-description = "WIP placeholder. Stay tuned."
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
+authors = ["Mihai Galos <mihaigalos@gmail.com>"]
+description = "👏 Auto-propagate Cargo.toml infos (name, version, author, repo) into app."
+categories = ["command-line-utilities", "filesystem"]
+keywords = ["disk", "disk-usage"]
+repository = "https://github.com/mihaigalos/autoclap"
 license = "MIT"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+clap = "3.0.13"
