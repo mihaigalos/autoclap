@@ -14,6 +14,8 @@ macro_rules! autoclap {
                 env!("CARGO_PKG_VERSION"),
             )
         ))
+        .author(env!("CARGO_PKG_AUTHORS"))
+        .about(env!("CARGO_PKG_DESCRIPTION"))
         .arg(
             Arg::new("debug")
                 .long("debug")

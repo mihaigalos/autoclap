@@ -1,19 +1,22 @@
 # autoclap
-🚧 WIP 🚧
 
 This lib builds on top of [`clap`](https://crates.io/crates/clap) and auto-propagates `Cargo.toml` infos (name, version, author, repo) into the application using it.
+
+Running `app --help` now automatically includes this information in its output.
 
 ## Why?
 
 `Cargo.toml` is the single source of truth containing application attributes such as:
 * name
 * version
-
-Once `clap :: author<S: Into<String>>(self, author: S)` and `clap :: about<S: Into<String>>(self, author: S)` are implemented, those can be implicitly deduced as well.
+* author(s)
+* description
 
 This information is usually duplicated in the app's `main`, leading to potential inconsistencies (update in one place but not another).
 
 Moreover, a crate unifying this would provide consistency across all apps using it.
+
+Finally, code for app initialization is minimal.
 
 ## Usage
 
@@ -32,6 +35,14 @@ fn main() {
     .get_matches_safe()
     .unwrap_or_else(|e| e.exit());
 }
+```
+
+Now, running `app --help` now produces:
+
+```
+app 0.1.0 :: https://github.com/username/app/releases/tag/0.1.0
+Crate Author <crateauthor@e.mail>
+🧵 The crate awesome description.
 ```
 
 ## Releases
