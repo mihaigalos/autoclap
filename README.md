@@ -18,8 +18,11 @@ Moreover, a crate unifying this would provide consistency across all apps using 
 ## Usage
 
 ```rust
+use clap::{App, Arg};
+use autoclap::autoclap;
+
 fn main() {
-    let app = autoclap(); // return a clap::App
+    let app = autoclap!(); // return a clap::App
     app.arg(
         Arg::with_name("myarg")
             .long("myarg")
