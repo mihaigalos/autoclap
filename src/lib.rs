@@ -29,8 +29,8 @@ pub fn autoclap() -> clap::App<'static> {
         .arg(
             Arg::new("debug")
                 .long("debug")
-                .short('d')
-                .help("Print raw data used in statistics."),
+                .short('D')
+                .help("Print raw data used internally."),
         );
     } else {
         panic!("Cannot determine repository from repository URL.");
