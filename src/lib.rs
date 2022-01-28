@@ -1,40 +1,26 @@
-use clap::{App, Arg};
-use std::env;
-
-pub fn autoclap() -> clap::App<'static> {
-    let repo = env::var("CARGO_PKG_REPOSITORY").unwrap();
-    let mut release_tag = "";
-
-    if repo.contains("github") {
-        release_tag = "/releases/tag/";
-    } else if repo.contains("gitlab") {
-        release_tag = "/-/releases/";
-    }
-
-    if repo.contains("github") {
-        let app_name = format!(
+#[macro_export]
+macro_rules! autoclap {
+    () => {
+        App::new(format!(
             "{}{}{}{}{}",
-            env::var("CARGO_PKG_NAME").unwrap(),
+            env!("CARGO_PKG_NAME"),
             " ",
-            env::var("CARGO_PKG_VERSION").unwrap(),
+            env!("CARGO_PKG_VERSION"),
             " :: ",
             format!(
                 "{}{}{}",
-                env::var("CARGO_PKG_REPOSITORY").unwrap(),
-                release_tag,
-                env::var("CARGO_PKG_VERSION").unwrap(),
+                env!("CARGO_PKG_REPOSITORY"),
+                "/releases/tag/",
+                env!("CARGO_PKG_VERSION"),
             )
-        );
-
-        return App::new(app_name).arg(
+        ))
+        .arg(
             Arg::new("debug")
                 .long("debug")
                 .short('D')
                 .help("Print raw data used internally."),
-        );
-    } else {
-        panic!("Cannot determine repository from repository URL.");
-    }
+        )
+    };
 }
 
 #[cfg(test)]
@@ -42,16 +28,18 @@ mod tests {
     use super::*;
     #[test]
     fn test_autoclap_name_works_when_typical() {
-        let app = autoclap();
+        use clap::{App, Arg};
+        let app = autoclap!();
         assert_eq!(
             app.get_name(),
-            "autoclap 0.1.0 :: https://github.com/mihaigalos/autoclap/releases/tag/0.1.0"
+            "autoclap 0.1.1 :: https://github.com/mihaigalos/autoclap/releases/tag/0.1.1"
         );
     }
     #[test]
     #[ignore] // Await clap :: author<S: Into<String>>(self, author: S)
     fn test_autoclap_author_works_when_typical() {
-        let app = autoclap();
+        use clap::{App, Arg};
+        let app = autoclap!();
         assert_eq!(
             app.get_about().unwrap(),
             "👏 Auto-propagate Cargo.toml infos (name, version, author, repo) into app."

@@ -36,4 +36,4 @@ The packge repository URL is concatenated with the version of a package to form 
 
 This URL goes live when a release with the same version as the crate is published.
 
-`autoclap` offers out-of-the box support for `GitHub` and `GitLab`.
+`autoclap` offers out-of-the box support for `GitHub`.
