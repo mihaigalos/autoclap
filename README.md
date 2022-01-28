@@ -8,8 +8,8 @@ This lib builds on top of [`clap`](https://crates.io/crates/clap) and auto-propa
 `Cargo.toml` is the single source of truth containing application attributes such as:
 * name
 * version
-* repository where it's hosted
-* author(s)
+
+Once `clap :: author<S: Into<String>>(self, author: S)` and `clap :: about<S: Into<String>>(self, author: S)` are implemented, those can be implicitly deduced as well.
 
 This information is usually duplicated in the app's `main`, leading to potential inconsistencies (update in one place but not another).
 
