@@ -1,5 +1,5 @@
 # autoclap
-
+🚧 WIP 🚧
 This lib builds on top of [`clap`](https://crates.io/crates/clap) and auto-propagates `Cargo.toml` infos (name, version, author, repo) into the application using it.
 
 ## Why?
