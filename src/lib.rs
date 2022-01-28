@@ -1,7 +1,8 @@
 use clap::{App, Arg};
+use std::env;
 
 pub fn autoclap() -> clap::App<'static> {
-    let repo = env!("CARGO_PKG_REPOSITORY");
+    let repo = env::var("CARGO_PKG_REPOSITORY").unwrap();
     let mut release_tag = "";
 
     if repo.contains("github") {
@@ -11,22 +12,21 @@ pub fn autoclap() -> clap::App<'static> {
     }
 
     if repo.contains("github") {
-        return App::new(format!(
+        let app_name = format!(
             "{}{}{}{}{}",
-            env!("CARGO_CRATE_NAME"),
+            env::var("CARGO_PKG_NAME").unwrap(),
             " ",
-            env!("CARGO_PKG_VERSION"),
+            env::var("CARGO_PKG_VERSION").unwrap(),
             " :: ",
             format!(
                 "{}{}{}",
-                env!("CARGO_PKG_REPOSITORY"),
+                env::var("CARGO_PKG_REPOSITORY").unwrap(),
                 release_tag,
-                env!("CARGO_PKG_VERSION"),
+                env::var("CARGO_PKG_VERSION").unwrap(),
             )
-        ))
-        .author(env!("CARGO_PKG_AUTHORS"))
-        .about(env!("CARGO_PKG_DESCRIPTION"))
-        .arg(
+        );
+
+        return App::new(app_name).arg(
             Arg::new("debug")
                 .long("debug")
                 .short('D')
