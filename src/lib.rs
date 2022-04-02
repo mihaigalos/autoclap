@@ -1,7 +1,7 @@
 #[macro_export]
 macro_rules! autoclap {
     () => {
-        App::new(format!(
+        Command::new(format!(
             "{}{}{}{}{}",
             env!("CARGO_PKG_NAME"),
             " ",
@@ -30,7 +30,7 @@ mod tests {
     use super::*;
     #[test]
     fn test_autoclap_name_works_when_typical() {
-        use clap::{App, Arg};
+        use clap::{Arg, Command};
         let app = autoclap!();
         assert_eq!(
             app.get_name(),
@@ -39,7 +39,7 @@ mod tests {
     }
     #[test]
     fn test_autoclap_description_works_when_typical() {
-        use clap::{App, Arg};
+        use clap::{Arg, Command};
         let app = autoclap!();
         assert_eq!(
             app.get_about().unwrap(),

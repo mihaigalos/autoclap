@@ -1,6 +1,6 @@
 [package]
 name = "autoclap"
-version = "0.2.1"
+version = "0.2.2"
 edition = "2021"
 authors = ["Mihai Galos <mihaigalos@gmail.com>"]
 description = "👏 Auto-propagate Cargo.toml infos (name, version, author, repo) into app."
@@ -10,4 +10,4 @@ repository = "https://github.com/mihaigalos/autoclap"
 license = "MIT"
 
 [dependencies]
-clap = "3.0.13"
+clap = "3.1.8"
