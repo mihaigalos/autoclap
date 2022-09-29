@@ -34,7 +34,7 @@ mod tests {
         let app = autoclap!();
         assert_eq!(
             app.get_name(),
-            "autoclap 0.2.1 :: https://github.com/mihaigalos/autoclap/releases/tag/0.2.1"
+            "autoclap 0.2.3 :: https://github.com/mihaigalos/autoclap/releases/tag/0.2.3"
         );
     }
     #[test]
@@ -42,7 +42,7 @@ mod tests {
         use clap::{Arg, Command};
         let app = autoclap!();
         assert_eq!(
-            app.get_about().unwrap(),
+            app.get_about().unwrap().to_string(),
             "👏 Auto-propagate Cargo.toml infos (name, version, author, repo) into app."
         );
     }
