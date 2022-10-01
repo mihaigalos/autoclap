@@ -1,0 +1,9 @@
+on:
+  pull_request:
+    types:
+      - merged
+
+jobs:
+  audit:
+    uses: mihaigalos/config/.github/workflows/rust-cd-auto.yaml@main
+
