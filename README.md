@@ -1,5 +1,7 @@
 # autoclap
 
+[![CD-auto](https://github.com/mihaigalos/autoclap/actions/workflows/cd-auto.yaml/badge.svg)](https://github.com/mihaigalos/autoclap/actions/workflows/cd-auto.yaml)
+
 This lib builds on top of [`clap`](https://crates.io/crates/clap) and auto-propagates `Cargo.toml` infos (name, version, author, repo) into the application using it.
 
 Running `app --help` now automatically includes this information in its output.
