@@ -34,7 +34,7 @@ mod tests {
         let app = autoclap!();
         assert_eq!(
             app.get_name(),
-            "autoclap 0.2.5 :: https://github.com/mihaigalos/autoclap/releases/tag/0.2.5"
+            "autoclap 0.2.6 :: https://github.com/mihaigalos/autoclap/releases/tag/0.2.6"
         );
     }
     #[test]
