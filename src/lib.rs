@@ -20,7 +20,9 @@ macro_rules! autoclap {
             Arg::new("debug")
                 .long("debug")
                 .short('D')
-                .help("Print raw data used internally."),
+                .action(ArgAction::SetTrue)
+                .help("Print raw data used internally.")
+                .required(false),
         )
     };
 }
@@ -28,7 +30,7 @@ macro_rules! autoclap {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use clap::{Arg, Command};
+    use clap::{Arg, ArgAction, Command};
 
     fn grep_version() -> String {
         use std::process::Command;
