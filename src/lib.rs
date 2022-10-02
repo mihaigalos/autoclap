@@ -40,12 +40,12 @@ mod tests {
     }
     #[test]
     fn test_autoclap_name_works_when_typical() {
+        let version = grep_version();
         let expected = "autoclap ".to_string()
             + &version
             + " :: https://github.com/mihaigalos/autoclap/releases/tag/"
             + &version;
         let app = autoclap!();
-        let version = grep_version();
 
         let actual = app.get_name();
 
