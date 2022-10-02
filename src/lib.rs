@@ -28,6 +28,8 @@ macro_rules! autoclap {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use clap::{Arg, Command};
+
     fn grep_version() -> String {
         use std::process::Command;
         let output = Command::new("tools/get_version.sh")
@@ -38,13 +40,12 @@ mod tests {
     }
     #[test]
     fn test_autoclap_name_works_when_typical() {
-        use clap::{Arg, Command};
-        let app = autoclap!();
-        let version = grep_version();
         let expected = "autoclap ".to_string()
             + &version
             + " :: https://github.com/mihaigalos/autoclap/releases/tag/"
             + &version;
+        let app = autoclap!();
+        let version = grep_version();
 
         let actual = app.get_name();
 
@@ -52,7 +53,6 @@ mod tests {
     }
     #[test]
     fn test_autoclap_description_works_when_typical() {
-        use clap::{Arg, Command};
         let expected = "👏 Auto-propagate Cargo.toml infos (name, version, author, repo) into app.";
         let app = autoclap!();
 
