@@ -28,6 +28,7 @@ use autoclap::autoclap;
 
 fn main() {
     let app = autoclap!(); // return a clap::App
+
     app.arg(
         Arg::with_name("myarg")
             .long("myarg")
