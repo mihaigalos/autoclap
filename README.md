@@ -23,11 +23,11 @@ Finally, code for app initialization is minimal.
 ## Usage
 
 ```rust
-use clap::{App, Arg};
+use clap::Command;
 use autoclap::autoclap;
 
 fn main() {
-    let app = autoclap!(); // return a clap::App
+    let app = autoclap!();
 
     app.arg(
         Arg::with_name("myarg")
