@@ -37,7 +37,7 @@ fn main() {
     );
     let args = app.clone().try_get_matches().unwrap_or_else(|e| e.exit());
 
-    if args.get_flag("update") { /* My logic.*/}
+    if args.get_flag("update") { /* My implementation.*/}
 }
 ```
 
