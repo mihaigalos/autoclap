@@ -16,14 +16,6 @@ macro_rules! autoclap {
                 ),
                 env!("CARGO_PKG_DESCRIPTION")
             ))
-            .arg(
-                Arg::new("debug")
-                    .long("debug")
-                    .short('D')
-                    .action(ArgAction::SetTrue)
-                    .help("Print raw data used internally.")
-                    .required(false),
-            )
     };
 }
 
