@@ -34,9 +34,10 @@ fn main() {
             .long("myarg")
             .short('m')
             .help("My arg description."),
-    )
-    .get_matches_safe()
-    .unwrap_or_else(|e| e.exit());
+    );
+    let args = app.clone().try_get_matches().unwrap_or_else(|e| e.exit());
+
+    if args.get_flag("update") { /* My logic.*/}
 }
 ```
 
